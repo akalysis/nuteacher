@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { ChevronDown, ChevronRight, Home, User, BookOpen, HeartPulse } from "lucide-react";
+import { ChevronDown, ChevronRight, Home, User, BookOpen, HeartPulse, FileText } from "lucide-react";
 
 type MenuItem = {
   title: string;
@@ -39,11 +39,19 @@ const menuItems: MenuItem[] = [
       { title: "Introduction", path: "/health-expectancies" },
     ],
   },
+  {
+    title: "Survey Methods",
+    icon: <FileText size={18} />,
+    children: [
+      { title: "Introduction", path: "/survey-methods" },
+      { title: "Questionnaire Design Handbook", path: "/survey-methods/questionnaire-design" },
+    ],
+  },
 ];
 
 export default function Sidebar() {
   const pathname = usePathname();
-  const [openGroups, setOpenGroups] = useState<string[]>(["Newcastle 85+", "Health Expectancies"]);
+  const [openGroups, setOpenGroups] = useState<string[]>(["Newcastle 85+", "Health Expectancies", "Survey Methods"]);
 
   const toggleGroup = (title: string) => {
     setOpenGroups((prev) =>

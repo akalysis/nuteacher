@@ -1,0 +1,96 @@
+.page {
+  display: grid;
+  gap: 1.75rem;
+}
+
+.intro {
+  max-width: 860px;
+}
+
+.title {
+  margin-bottom: 0.85rem;
+}
+
+.surface {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 18px;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+.note {
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  margin-bottom: 1.25rem;
+}
+
+.handbook {
+  color: var(--text-primary);
+  overflow-x: auto;
+}
+
+.handbook :global(h2) {
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.handbook :global(h3) {
+  font-size: 1.35rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.handbook :global(h4) {
+  font-size: 1.05rem;
+  margin-top: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.handbook :global(p),
+.handbook :global(li) {
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+.handbook :global(p) {
+  margin: 0 0 0.9rem;
+}
+
+.handbook :global(ul),
+.handbook :global(ol) {
+  margin: 0 0 1rem 1.2rem;
+}
+
+.handbook :global(table) {
+  width: 100%;
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto;
+  margin: 1rem 0 1.25rem;
+}
+
+.handbook :global(td),
+.handbook :global(th) {
+  border-color: rgba(148, 163, 184, 0.2) !important;
+  color: var(--text-secondary);
+  background: rgba(15, 23, 42, 0.35);
+}
+
+.additionalReferences {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+@media (max-width: 820px) {
+  .surface {
+    padding: 1rem;
+  }
+
+  .handbook :global(h2) {
+    font-size: 1.7rem;
+  }
+}
