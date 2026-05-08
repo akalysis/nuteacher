@@ -2,7 +2,7 @@ export type OutlineItem = {
   displayText: string;
   id: string;
   level: "h2" | "h3" | "h4";
-  contentSource?: "authored" | "handbook";
+  contentSource?: "authored" | "source";
   sourceTag?: "p7" | "li7" | "li27";
   sourceText?: string;
   showInMenu?: boolean;

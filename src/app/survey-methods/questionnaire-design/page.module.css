@@ -60,16 +60,16 @@
   color: #ecfccb;
 }
 
-.handbook {
+.articleContent {
   color: var(--text-primary);
   margin: 0 auto;
   max-width: min(74ch, 100%);
   overflow-x: auto;
 }
 
-.handbook :global(h2),
-.handbook :global(h3),
-.handbook :global(h4) {
+.articleContent :global(h2),
+.articleContent :global(h3),
+.articleContent :global(h4) {
   color: #f8fafc;
   font-family: var(--font-display);
   letter-spacing: -0.02em;
@@ -78,48 +78,48 @@
   scroll-margin-top: 1.5rem;
 }
 
-.handbook :global(h2) {
+.articleContent :global(h2) {
   font-size: clamp(1.95rem, 3.3vw, 2.7rem);
   margin-top: 0.25rem;
 }
 
-.handbook :global(h3) {
+.articleContent :global(h3) {
   border-top: 1px solid rgba(148, 163, 184, 0.14);
   font-size: clamp(1.35rem, 2vw, 1.75rem);
   margin-top: 2.6rem;
   padding-top: 2rem;
 }
 
-.handbook :global(h4) {
+.articleContent :global(h4) {
   color: rgba(248, 250, 252, 0.95);
   font-size: 1.08rem;
   font-weight: 700;
   margin-top: 1.6rem;
 }
 
-.handbook :global(h2:first-child),
-.handbook :global(h3:first-child),
-.handbook :global(h4:first-child) {
+.articleContent :global(h2:first-child),
+.articleContent :global(h3:first-child),
+.articleContent :global(h4:first-child) {
   border-top: none;
   margin-top: 0;
   padding-top: 0;
 }
 
-.handbook :global(p),
-.handbook :global(li),
-.handbook :global(td),
-.handbook :global(th) {
+.articleContent :global(p),
+.articleContent :global(li),
+.articleContent :global(td),
+.articleContent :global(th) {
   color: rgba(226, 232, 240, 0.84);
   font-size: 1.05rem;
   line-height: 1.82;
 }
 
-.handbook :global(p) {
+.articleContent :global(p) {
   margin: 0 0 1.05rem;
   text-wrap: pretty;
 }
 
-.handbook :global(p:has(+ table)) {
+.articleContent :global(p:has(+ table)) {
   color: #f8fafc;
   font-size: 0.95rem;
   font-weight: 700;
@@ -127,64 +127,64 @@
   margin: 2rem 0 0.7rem;
 }
 
-.handbook :global(table + p) {
+.articleContent :global(table + p) {
   color: rgba(203, 213, 225, 0.76);
   font-size: 0.94rem;
   line-height: 1.65;
   margin-top: -0.55rem;
 }
 
-.handbook :global(ul),
-.handbook :global(ol) {
+.articleContent :global(ul),
+.articleContent :global(ol) {
   margin: 0 0 1.3rem;
   padding-left: 1.3rem;
 }
 
-.handbook :global(li + li) {
+.articleContent :global(li + li) {
   margin-top: 0.45rem;
 }
 
-.handbook :global(ul ul),
-.handbook :global(ol ol),
-.handbook :global(ul ol),
-.handbook :global(ol ul) {
+.articleContent :global(ul ul),
+.articleContent :global(ol ol),
+.articleContent :global(ul ol),
+.articleContent :global(ol ul) {
   margin-top: 0.55rem;
   margin-bottom: 0.8rem;
 }
 
-.handbook :global(p + ul),
-.handbook :global(p + ol) {
+.articleContent :global(p + ul),
+.articleContent :global(p + ol) {
   margin-top: -0.2rem;
 }
 
-.handbook :global(a) {
+.articleContent :global(a) {
   color: #bef264;
   text-decoration: underline;
   text-decoration-color: rgba(190, 242, 100, 0.42);
   text-underline-offset: 0.2em;
 }
 
-.handbook :global(a:hover) {
+.articleContent :global(a:hover) {
   color: #d9f99d;
   text-decoration-color: rgba(217, 249, 157, 0.72);
 }
 
-.handbook :global(strong),
-.handbook :global(b) {
+.articleContent :global(strong),
+.articleContent :global(b) {
   color: #f8fafc;
 }
 
-.handbook :global(i),
-.handbook :global(em) {
+.articleContent :global(i),
+.articleContent :global(em) {
   color: rgba(226, 232, 240, 0.92);
 }
 
-.handbook :global(sup),
-.handbook :global(sub) {
+.articleContent :global(sup),
+.articleContent :global(sub) {
   font-size: 0.72em;
 }
 
-.handbook :global(table) {
+.articleContent :global(table) {
   border-collapse: collapse;
   display: block;
   margin: 1.6rem 0 1.85rem;
@@ -192,8 +192,8 @@
   width: 100%;
 }
 
-.handbook :global(th),
-.handbook :global(td) {
+.articleContent :global(th),
+.articleContent :global(td) {
   background: rgba(15, 23, 42, 0.72);
   border: 1px solid rgba(148, 163, 184, 0.18);
   min-width: 10rem;
@@ -202,16 +202,16 @@
   vertical-align: top;
 }
 
-.handbook :global(th) {
+.articleContent :global(th) {
   color: #f8fafc;
   font-weight: 700;
 }
 
-.handbook :global(tr:nth-child(even) td) {
+.articleContent :global(tr:nth-child(even) td) {
   background: rgba(30, 41, 59, 0.58);
 }
 
-.handbook :global(hr) {
+.articleContent :global(hr) {
   border: 0;
   border-top: 1px solid rgba(148, 163, 184, 0.14);
   margin: 2rem 0;
@@ -344,14 +344,14 @@
     padding: 1.15rem;
   }
 
-  .handbook :global(p),
-  .handbook :global(li),
-  .handbook :global(td),
-  .handbook :global(th) {
+  .articleContent :global(p),
+  .articleContent :global(li),
+  .articleContent :global(td),
+  .articleContent :global(th) {
     font-size: 1rem;
   }
 
-  .handbook :global(h3) {
+  .articleContent :global(h3) {
     margin-top: 2.1rem;
     padding-top: 1.55rem;
   }

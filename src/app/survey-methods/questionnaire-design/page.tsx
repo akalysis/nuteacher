@@ -12,8 +12,10 @@ export default function QuestionnaireDesignIndexPage() {
         <span className="label-tracking">Survey Methods</span>
         <h1 className={styles.title}>Questionnaire Design</h1>
         <p className={styles.lead}>
-          A section-by-section guide to questionnaire design, covering core principles, question
-          construction, structure, fieldwork, data quality, and digital delivery.
+          This section brings together practical guidance for designing questionnaires that produce
+          usable, defensible survey data. It covers what to ask, how to ask it, how to structure the
+          instrument, how to test it, and how to adapt good questionnaire design for digital,
+          mobile, social-platform, mixed-mode and traditional fieldwork.
         </p>
       </div>
 

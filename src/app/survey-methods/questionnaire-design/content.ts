@@ -3,6 +3,13 @@ import { join } from "node:path";
 import { questionnaireDesignOutline } from "./outline";
 import { questionnaireDesignAuthoredSections } from "./authored-sections";
 
+const questionnaireDesignIntroductionHtml = `
+  <p>This section of the website sets out a practical approach to questionnaire design for survey research. Its purpose is to help researchers move from a broad information need to a questionnaire that respondents can understand, complete accurately, and complete with as little unnecessary burden as possible.</p>
+  <p>Questionnaire design is treated here as part of the whole survey process, not as a final formatting task. Good questions depend on clearly defined constructs, appropriate measures, suitable response options, careful ordering, accessible layout, realistic fieldwork planning, and testing before use.</p>
+  <p>The material is organised so that it can be used in different ways: as a complete route through questionnaire design, as a reference for specific decisions such as question wording or response categories, and as a checklist for reviewing an existing instrument before it goes into the field.</p>
+  <p>It covers traditional self-completion and postal surveys alongside online, mobile, SMS, app-based, social-platform and mixed-mode approaches. The aim is to keep the core standards of good survey measurement while recognising how people now encounter and complete questionnaires across devices and platforms.</p>
+`;
+
 const escapeRegExp = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 const textPattern = (text: string) => escapeRegExp(text).replace(/\s+/g, "\\s+");
@@ -88,11 +95,11 @@ const guideWideReplacements: Array<[RegExp, string]> = [
   ],
   [
     /identified in the Further Reading section at the end of this handbook/gi,
-    "identified in the further reading section at the end of this guide",
+    "identified in the further reading section",
   ],
   [
     /The American Association for Public Opinion Research has produced a useful guide to best practice in survey and public opinion research, elaborating on issues raised in this chapter and elsewhere in this handbook\./g,
-    "The American Association for Public Opinion Research has produced a useful guide to best practice in survey and public opinion research, elaborating on issues raised in this section and elsewhere in this guide.",
+    "The American Association for Public Opinion Research has produced a useful resource on best practice in survey and public opinion research, elaborating on issues raised in this section and elsewhere on this topic.",
   ],
   [
     /As we have seen in Chapter 1,/g,
@@ -220,11 +227,11 @@ const guideWideReplacements: Array<[RegExp, string]> = [
   ],
   [
     /\bthis handbook\b/g,
-    "this guide",
+    "this section",
   ],
   [
     /\bThis handbook\b/g,
-    "This guide",
+    "This section",
   ],
   [
     /\bchapters below\b/g,
@@ -298,6 +305,7 @@ const resourceLinkReplacements: Array<[RegExp, string]> = [
     urlReplacement("http://www.unescap.org/sites/default/files/Disability-question-testing-guidelines.pdf"),
     "the UNESCAP disability statistics and questionnaire-testing resources",
   ],
+  [urlReplacement("http://edithl.home.xs4all.nl/surveyhandbook/BMS55.pdf"), "the BMS article archive"],
   [urlReplacement("https://www.census.gov/library/working-papers/1998/adrm/sm98-03.html"), "the US Census Bureau survey-methods working papers"],
   [
     urlReplacement("https://www.researchgate.net/publication/259812768_Question_Appraisal_System_QAS_99_Manual"),
@@ -427,11 +435,11 @@ const rewriteSectionHtml = (id: string, html: string) => {
   );
 };
 
-let transformedHandbookPromise: Promise<{ html: string }> | null = null;
+let transformedQuestionnaireContentPromise: Promise<{ html: string }> | null = null;
 
-const getTransformedHandbook = async () => {
-  if (!transformedHandbookPromise) {
-    transformedHandbookPromise = (async () => {
+const getTransformedQuestionnaireContent = async () => {
+  if (!transformedQuestionnaireContentPromise) {
+    transformedQuestionnaireContentPromise = (async () => {
       const filePath = join(process.cwd(), "src/content/survey-methods-handbook.html");
       const raw = await readFile(filePath, "utf8");
       const body = raw.match(/<body>([\s\S]*?)<\/body>/i)?.[1] ?? raw;
@@ -461,13 +469,13 @@ const getTransformedHandbook = async () => {
     })();
   }
 
-  return transformedHandbookPromise;
+  return transformedQuestionnaireContentPromise;
 };
 
 const headingRegex = /<(h[234]) id="([^"]+)">([\s\S]*?)<\/\1>/g;
 
 export const getQuestionnaireDocumentHtml = async () => {
-  const { html } = await getTransformedHandbook();
+  const { html } = await getTransformedQuestionnaireContent();
   return html;
 };
 
@@ -476,6 +484,13 @@ export const getQuestionnaireSectionHtml = async (id: string) => {
 
   if (!outlineItem) {
     return null;
+  }
+
+  if (id === "introduction") {
+    return {
+      title: outlineItem.displayText,
+      html: questionnaireDesignIntroductionHtml,
+    };
   }
 
   if (outlineItem.contentSource === "authored") {
@@ -491,7 +506,7 @@ export const getQuestionnaireSectionHtml = async (id: string) => {
     };
   }
 
-  const { html } = await getTransformedHandbook();
+  const { html } = await getTransformedQuestionnaireContent();
   const matches = [...html.matchAll(headingRegex)].map((match) => ({
     full: match[0],
     level: Number(match[1].slice(1)),

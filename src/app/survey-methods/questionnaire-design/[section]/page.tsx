@@ -42,7 +42,7 @@ export default async function QuestionnaireDesignSectionPage({
 
       <div className={styles.surface}>
         <div
-          className={styles.handbook}
+          className={styles.articleContent}
           dangerouslySetInnerHTML={{ __html: content.html }}
         />
       </div>
