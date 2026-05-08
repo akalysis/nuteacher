@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ChevronDown, ChevronRight, Home, User, BookOpen, HeartPulse, FileText } from "lucide-react";
 import { questionnaireDesignNavigationGroups } from "@/app/survey-methods/questionnaire-design/navigation";
+import SiteLogo from "./SiteLogo";
 
 type MenuItem = {
   title: string;
@@ -132,7 +133,9 @@ export default function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="sidebar-logo">
-        <Link href="/">Andrew Kingston</Link>
+        <Link href="/" aria-label="Andrew Kingston home">
+          <SiteLogo />
+        </Link>
       </div>
       
       <nav className="sidebar-nav">

@@ -138,12 +138,84 @@ a {
 }
 
 .sidebar-logo {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--text-primary);
   margin-bottom: 2.5rem;
-  letter-spacing: 0.1em;
+}
+
+.sidebar-logo a {
+  color: inherit;
+  display: block;
+}
+
+.site-logo {
+  align-items: center;
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: 4.35rem minmax(0, 1fr);
+}
+
+.site-logo-mark {
+  display: block;
+  filter: drop-shadow(0 12px 26px rgba(163, 230, 53, 0.12));
+  height: auto;
+  overflow: visible;
+  width: 4.35rem;
+}
+
+.site-logo-arc,
+.site-logo-line,
+.site-logo-axis {
+  fill: none;
+  stroke: rgba(248, 250, 252, 0.94);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.site-logo-arc {
+  stroke-width: 2.4;
+}
+
+.site-logo-line {
+  stroke-width: 1.8;
+}
+
+.site-logo-axis {
+  stroke-width: 1.55;
+}
+
+.site-logo-signal {
+  fill: none;
+  stroke: rgba(163, 230, 53, 0.72);
+  stroke-dasharray: 0.2 7.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 4.3;
+}
+
+.site-logo-dot {
+  filter: drop-shadow(0 0 8px rgba(163, 230, 53, 0.16));
+}
+
+.site-logo-dot.light {
+  fill: #f8fafc;
+}
+
+.site-logo-dot.olive {
+  fill: #96a36f;
+}
+
+.site-logo-wordmark {
+  color: var(--text-primary);
+  display: grid;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.06;
+  text-transform: uppercase;
+}
+
+.site-logo-wordmark span:last-child {
+  color: rgba(226, 232, 240, 0.82);
 }
 
 .menu-group {
