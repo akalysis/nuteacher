@@ -10,7 +10,7 @@ type MenuItem = {
   title: string;
   path?: string;
   icon?: React.ReactNode;
-  children?: { title: string; path: string }[];
+  children?: MenuItem[];
 };
 
 const questionnaireDesignMenuItems = questionnaireDesignNavigationGroups
@@ -51,15 +51,18 @@ const menuItems: MenuItem[] = [
     icon: <FileText size={18} />,
     children: [
       { title: "Introduction", path: "/survey-methods" },
-      { title: "Questionnaire design", path: "/survey-methods/questionnaire-design" },
-      ...questionnaireDesignMenuItems,
+      {
+        title: "Questionnaire design",
+        path: "/survey-methods/questionnaire-design",
+        children: questionnaireDesignMenuItems,
+      },
     ],
   },
 ];
 
 export default function Sidebar() {
   const pathname = usePathname();
-  const [openGroups, setOpenGroups] = useState<string[]>(["Newcastle 85+", "Health Expectancies", "Survey Methods"]);
+  const [openGroups, setOpenGroups] = useState<string[]>([]);
   const [currentUrl, setCurrentUrl] = useState(pathname);
 
   useEffect(() => {
@@ -78,6 +81,51 @@ export default function Sidebar() {
   const toggleGroup = (title: string) => {
     setOpenGroups((prev) =>
       prev.includes(title) ? prev.filter((g) => g !== title) : [...prev, title]
+    );
+  };
+
+  const isActiveItem = (item: MenuItem): boolean =>
+    currentUrl === item.path || Boolean(item.children?.some((child) => isActiveItem(child)));
+
+  const renderChildItem = (item: MenuItem) => {
+    const itemKey = item.path ?? item.title;
+    const isOpen = openGroups.includes(itemKey);
+    const isActive = isActiveItem(item);
+
+    if (item.children) {
+      return (
+        <div key={itemKey} className="menu-nested-group">
+          <div className="menu-nested-row">
+            <Link
+              href={item.path!}
+              className={`menu-item-link menu-item-parent ${isActive ? "active" : ""}`}
+            >
+              {item.title}
+            </Link>
+            <button
+              type="button"
+              onClick={() => toggleGroup(itemKey)}
+              className={`menu-nested-toggle ${isOpen ? "active" : ""}`}
+              aria-label={`${isOpen ? "Collapse" : "Expand"} ${item.title}`}
+            >
+              {isOpen ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
+            </button>
+          </div>
+          <div className={`menu-items nested ${isOpen ? "open" : ""}`}>
+            {item.children.map((child) => renderChildItem(child))}
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <Link
+        key={item.path}
+        href={item.path!}
+        className={`menu-item-link ${currentUrl === item.path ? "active" : ""}`}
+      >
+        {item.title}
+      </Link>
     );
   };
 
@@ -102,15 +150,7 @@ export default function Sidebar() {
                   {openGroups.includes(item.title) ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
                 </button>
                 <div className={`menu-items ${openGroups.includes(item.title) ? "open" : ""}`}>
-                  {item.children.map((child) => (
-                    <Link
-                      key={child.path}
-                      href={child.path}
-                      className={`menu-item-link ${currentUrl === child.path ? "active" : ""}`}
-                    >
-                      {child.title}
-                    </Link>
-                  ))}
+                  {item.children.map((child) => renderChildItem(child))}
                 </div>
               </>
             ) : (
