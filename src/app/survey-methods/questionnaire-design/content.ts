@@ -66,7 +66,8 @@ const cleanExportMarkup = (html: string) =>
     .replace(/<\/?span[^>]*>/g, "")
     .replace(/<p>(?:\s|<br>)*<\/p>/g, "")
     .replace(/<ul>\s*<ul>/g, "<ul>")
-    .replace(/<\/ul>\s*<\/ul>/g, "</ul>");
+    .replace(/<\/ul>\s*<\/ul>/g, "</ul>")
+    .replace(/<\/ul>\s*<ul>/g, "");
 
 const guideWideReplacements: Array<[RegExp, string]> = [
   [
@@ -398,8 +399,86 @@ const linkifyUrls = (html: string) =>
     return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>${trailingPunctuation}`;
   });
 
+const stripHtml = (html: string) => html.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
+
+const shouldPromoteParagraphToListItem = (paragraphHtml: string) => {
+  const text = stripHtml(paragraphHtml);
+
+  if (!text || text.length > 240) {
+    return false;
+  }
+
+  if (/^(Box|Table|Figure|Summary|References|Further reading|In this section)\b/i.test(text)) {
+    return false;
+  }
+
+  if (/^(However|Finally|Nonetheless|Therefore|Once again|Sometimes|It is|There is|There are|The |This |These )\b/.test(text)) {
+    return false;
+  }
+
+  return /[;:.?]$/.test(text) || /^[a-z]/.test(text);
+};
+
+const promoteLooseParagraphLists = (html: string) =>
+  html.replace(
+    /(<p>[\s\S]*?(?:to:-|include:-|includes:-|following:-|include the following\.|are the following:-|such as:-)<\/p>)((?:\s*<p>[\s\S]*?<\/p>){2,})/g,
+    (_match, leadParagraph: string, paragraphRun: string) => {
+      const paragraphs = [...paragraphRun.matchAll(/\s*(<p>[\s\S]*?<\/p>)/g)].map((match) => match[1]);
+      const listItems: string[] = [];
+      const rest: string[] = [];
+      let stillPromoting = true;
+
+      for (const paragraph of paragraphs) {
+        const inner = paragraph.replace(/^<p>/, "").replace(/<\/p>$/, "");
+
+        if (stillPromoting && shouldPromoteParagraphToListItem(inner)) {
+          listItems.push(`<li>${inner}</li>`);
+        } else {
+          stillPromoting = false;
+          rest.push(paragraph);
+        }
+      }
+
+      if (listItems.length < 2) {
+        return `${leadParagraph}${paragraphRun}`;
+      }
+
+      return `${leadParagraph}<ul class="structuredList">${listItems.join("")}</ul>${rest.join("")}`;
+    },
+  );
+
+const enhanceGuideStructure = (html: string) =>
+  promoteLooseParagraphLists(html)
+    .replace(/<p>\s*(?:<b><\/b>)?\s*Summary of key points\s*<\/p>/gi, '<h3 class="summaryHeading">Summary of key points</h3>')
+    .replace(
+      /(<h3 class="summaryHeading">Summary of key points<\/h3>)((?:\s*<p>[\s\S]*?<\/p>){2,})/gi,
+      (_match, heading: string, paragraphRun: string) => {
+        const listItems = [...paragraphRun.matchAll(/\s*<p>([\s\S]*?)<\/p>/g)]
+          .map((match) => `<li>${match[1]}</li>`)
+          .join("");
+
+        return `${heading}<ul class="summaryList">${listItems}</ul>`;
+      },
+    )
+    .replace(/<p>\s*(?:<b>)?(Box\s+\d+)(?:<\/b>)?([\s\S]*?)<\/p>/gi, (_match, label: string, rest: string) => {
+      const cleanedRest = rest.replace(/<b>([\s\S]*?)<\/b>/g, "<strong>$1</strong>").trim();
+      return `<p class="figureLabel"><strong>${label}</strong>${cleanedRest ? ` ${cleanedRest}` : ""}</p>`;
+    })
+    .replace(/<p>\s*(?:<b>)?(Table\s+\d+)(?:<\/b>)?([\s\S]*?)<\/p>/gi, (_match, label: string, rest: string) => {
+      const cleanedRest = rest.replace(/<b>([\s\S]*?)<\/b>/g, "<strong>$1</strong>").trim();
+      return `<p class="figureLabel tableLabel"><strong>${label}</strong>${cleanedRest ? ` ${cleanedRest}` : ""}</p>`;
+    })
+    .replace(/<p>\s*(?:<b>)?(Figure\s+\d+)(?:<\/b>)?([\s\S]*?)<\/p>/gi, (_match, label: string, rest: string) => {
+      const cleanedRest = rest.replace(/<b>([\s\S]*?)<\/b>/g, "<strong>$1</strong>").trim();
+      return `<p class="figureLabel"><strong>${label}</strong>${cleanedRest ? ` ${cleanedRest}` : ""}</p>`;
+    })
+    .replace(
+      /(<p class="figureLabel"><strong>Box 1<\/strong>[\s\S]*?Steps in a survey[\s\S]*?<\/p>)\s*<ul>([\s\S]*?)<\/ul>/i,
+      '$1<ol class="numberedList">$2</ol>',
+    );
+
 const preparePublishedHtml = (html: string) =>
-  linkifyUrls(normalizeResourceLinks(normalizeGuideMarkup(cleanExportMarkup(html))))
+  linkifyUrls(enhanceGuideStructure(normalizeResourceLinks(normalizeGuideMarkup(cleanExportMarkup(html)))))
     .replace(/<p>\s*<\/p>/g, "")
     .replace(/<li>\s*<\/li>/g, "");
 
