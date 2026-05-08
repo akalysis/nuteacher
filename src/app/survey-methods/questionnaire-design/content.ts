@@ -236,6 +236,165 @@ const guideWideReplacements: Array<[RegExp, string]> = [
   ],
 ];
 
+const urlReplacement = (url: string) => new RegExp(escapeRegExp(url), "g");
+
+const resourceLinkReplacements: Array<[RegExp, string]> = [
+  [urlReplacement("http://www.natcen.ac.uk/"), "https://natcen.ac.uk/"],
+  [urlReplacement("http://www.natcen.ac.uk/our-research"), "https://natcen.ac.uk/our-research"],
+  [urlReplacement("http://www.ccsr.ac.uk/"), "https://www.cmi.manchester.ac.uk/"],
+  [urlReplacement("http://www.ons.gov.uk/ons/guide-method/index.html"), "https://www.ons.gov.uk/methodology"],
+  [urlReplacement("http://www.cdc.gov/nchs/surveys.htm"), "https://www.cdc.gov/nchs/dqs/index.html"],
+  [
+    urlReplacement("http://www.norc.org/Research/Capabilities/Pages/study-design-and-survey-methodology.aspx"),
+    "https://www.norc.org/services-solutions/design-and-methodology.html",
+  ],
+  [urlReplacement("http://www.sesrc.wsu.edu/dillman/papers.html"), "Dillman's published work on tailored questionnaire design"],
+  [urlReplacement("http://www.socialresearchmethods.net/kb/"), "https://conjointly.com/kb/"],
+  [urlReplacement("http://www.socialresearchmethods.net/kb/index.htm"), "https://conjointly.com/kb/"],
+  [urlReplacement("http://www.socialresearchmethods.net/kb/survey.htm"), "https://conjointly.com/kb/survey-research/"],
+  [urlReplacement("http://www.socialresearchmethods.net/kb/measure.htm"), "https://conjointly.com/kb/measurement-in-research/"],
+  [urlReplacement("http://www.socialresearchmethods.net/kb/measlevl.htm"), "https://conjointly.com/kb/levels-of-measurement/"],
+  [urlReplacement("http://www.socialresearchmethods.net/kb/sampling.htm"), "https://conjointly.com/kb/sampling-in-research/"],
+  [urlReplacement("https://conjointly.com/kb/index.htm"), "https://conjointly.com/kb/"],
+  [urlReplacement("https://conjointly.com/kb/survey.htm"), "https://conjointly.com/kb/survey-research/"],
+  [urlReplacement("https://conjointly.com/kb/measure.htm"), "https://conjointly.com/kb/measurement-in-research/"],
+  [urlReplacement("https://conjointly.com/kb/measlevl.htm"), "https://conjointly.com/kb/levels-of-measurement/"],
+  [urlReplacement("https://conjointly.com/kb/sampling.htm"), "https://conjointly.com/kb/sampling-in-research/"],
+  [
+    urlReplacement("http://www.socialsciences.manchester.ac.uk/morgan-centre/research/resources/toolkits/"),
+    "the University of Manchester research methods resources",
+  ],
+  [urlReplacement("https://ccsg.isr.umich.edu/"), "the University of Michigan cross-cultural survey guidelines"],
+  [
+    urlReplacement("https://www.aapor.org/Standards-Ethics/Best-Practices.aspx"),
+    "https://aapor.org/standards-and-ethics/best-practices/",
+  ],
+  [urlReplacement("http://writing.colostate.edu/guides/guide.cfm?guideid=68"), "Colorado State University's general writing and research guides"],
+  [urlReplacement("http://ukdataservice.ac.uk/get-data/key-data.aspx"), "https://datacatalogue.ukdataservice.ac.uk/"],
+  [urlReplacement("http://discover.ukdataservice.ac.uk/variables"), "https://datacatalogue.ukdataservice.ac.uk/searchresults?sort=2&tab=3"],
+  [
+    urlReplacement("http://www.ons.gov.uk/ons/guide-method/harmonisation/harmonisation-index-page/index.html"),
+    "https://www.ons.gov.uk/methodology/classificationsandstandards/harmonisationwithinthegss",
+  ],
+  [
+    urlReplacement("https://gss.civilservice.gov.uk/statistics/methodology-2/harmonisation/introduction-to-harmonisation/#primary"),
+    "https://www.ons.gov.uk/methodology/classificationsandstandards/harmonisationwithinthegss",
+  ],
+  [urlReplacement("http://wwwn.cdc.gov/qbank/Home.aspx"), "https://www.cdc.gov/nchs/ccqder/technology-products/index.html"],
+  [
+    urlReplacement("https://sesrc.wsu.edu/dillman/papers/1997/A%20Theory%20of%20Self-Administered%20Questionnaire%20Design.pdf"),
+    "https://www.census.gov/library/working-papers/1995/adrm/sm95-06.html",
+  ],
+  [
+    urlReplacement("https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.463.5473&amp;rep=rep1&amp;type=pdf"),
+    "https://www.cambridge.org/core/books/designing-effective-web-surveys/1EF1C9064FCC5464ED4B63C237482D61",
+  ],
+  [urlReplacement("http://www.textmatters.com/resources/pdfs/visImpd_typogTM.pdf"), "current accessible typography guidance"],
+  [
+    urlReplacement("https://www.bdadyslexia.org.uk/advice/employers/creating-a-dyslexia-friendly-workplace/dyslexia-friendly-style-guide"),
+    "https://www.bdadyslexia.org.uk/advice/employers/creating-a-dyslexia-friendly-workplace",
+  ],
+  [
+    urlReplacement("http://www.unescap.org/sites/default/files/Disability-question-testing-guidelines.pdf"),
+    "the UNESCAP disability statistics and questionnaire-testing resources",
+  ],
+  [urlReplacement("https://www.census.gov/library/working-papers/1998/adrm/sm98-03.html"), "the US Census Bureau survey-methods working papers"],
+  [
+    urlReplacement("https://www.researchgate.net/publication/259812768_Question_Appraisal_System_QAS_99_Manual"),
+    "https://www.websm.org/db/12/15804/Web%20Survey%20Bibliography/Question_Appraisal_System__QAS99_/",
+  ],
+  [
+    urlReplacement("https://wwwn.cdc.gov/QBANK/Search/Reports.aspx#/Reports"),
+    "https://www.cdc.gov/nchs/ccqder/question-evaluation/index.html",
+  ],
+  [
+    urlReplacement("https://wwwn.cdc.gov/QBANK/QUEST.aspx#/Home"),
+    "https://www.cdc.gov/nchs/ccqder/technology-products/index.html",
+  ],
+  [
+    urlReplacement("https://www.webarchive.org.uk/wayback/archive/20150218195719/http://www.gov.scot/Topics/Research/About/Social-Research/Methods-Guides/Guide-7"),
+    "the Scottish Government social research methods archive",
+  ],
+  [urlReplacement("http://www.bmj.com/content/324/7347/1183"), "doi:10.1136/bmj.324.7347.1183"],
+  [
+    urlReplacement("https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.MR000008.pub4/full?highlightAbstract=methodolog%7Creview%7Cmethodological"),
+    "doi:10.1002/14651858.MR000008.pub4",
+  ],
+  [urlReplacement("https://www.journalslibrary.nihr.ac.uk/hta/hta5310/#/abstract"), "doi:10.3310/hta5310"],
+  [urlReplacement("https://doi.org/10.1093/intqhc/mzg031"), "doi:10.1093/intqhc/mzg031"],
+  [urlReplacement("http://www.quantitativeskills.com/sisa/calculations/resprhlp.htm"), "https://aapor.org/response-rates/"],
+  [
+    urlReplacement("http://www.aapor.org/Standards-Ethics/Standard-Definitions-(1).aspx"),
+    "https://aapor.org/standards-and-ethics/standard-definitions/",
+  ],
+  [
+    urlReplacement("http://www.royalmail.com/marketing-services-regular/deliver-your-campaign/business-reply-freepost-plus"),
+    "https://www.royalmail.com/business/mail/replies-responses/business-reply-freepost-plus",
+  ],
+  [urlReplacement("http://www.royalmail.com/delivery/returning-mail-and-goods-uk"), "https://www.royalmail.com/business/parcels/returns"],
+  [
+    urlReplacement("https://personal.help.royalmail.com/app/answers/detail/a_id/277/~/addresses-we-cant-deliver-to"),
+    "the current Royal Mail personal-help guidance",
+  ],
+  [
+    urlReplacement("http://www.royalmail.com/personal/help-and-support/what-is-track-and-trace-and-how-do-I-use-it/"),
+    "https://www.royalmail.com/track-your-item",
+  ],
+  [
+    urlReplacement("http://www.royalmail.com/business/services/sending/letters-uk/business-mail"),
+    "https://www.royalmail.com/business/mail/business-mail",
+  ],
+  [
+    urlReplacement("https://gss.civilservice.gov.uk/wp-content/uploads/2016/11/The-coverage-of-the-PAF-and-AddressBase-and-targeting-ineligible-addresses-using-the-AddressBase-Classificatio.pdf"),
+    "the current ONS and GSS address-frame guidance",
+  ],
+  [
+    urlReplacement("http://www.ons.gov.uk/ons/guide-method/method-quality/general-methodology/data-collection-methodology/reports-and-publications/survey-methodology-bulletin-58---august-2006.html"),
+    "the ONS methodology archive",
+  ],
+  [urlReplacement("http://slideplayer.com/slide/786313/"), "the ONS methodology archive"],
+  [urlReplacement("https://www.unh.edu/institutional-research/sites/default/files/pamphlet.pdf"), "the American Statistical Association survey-methods resources"],
+  [urlReplacement("http://www.statisticalassociates.com/sampling.pdf"), "the National Audit Office sampling guide"],
+  [
+    urlReplacement("http://www.fantaproject.org/monitoring-and-evaluation/sampling"),
+    "the FANTA sampling guidance archive",
+  ],
+  [
+    urlReplacement("http://www.medicine.mcgill.ca/epidemiology/joseph/pbelisle/CodebookCookbook/CodebookCookbook.pdf"),
+    "https://www.icpsr.umich.edu/sites/icpsr/manage-data",
+  ],
+  [urlReplacement("https://www.iser.essex.ac.uk/bhps/documentation/vola/index.html"), "https://www.understandingsociety.ac.uk/documentation/"],
+  [
+    urlReplacement("https://www.iser.essex.ac.uk/bhps/documentation/pdf_versions/survey_docs/index.html"),
+    "https://www.understandingsociety.ac.uk/documentation/mainstage/",
+  ],
+  [urlReplacement("https://www.iser.essex.ac.uk/bhps/documentation/volb/index.html"), "https://www.understandingsociety.ac.uk/documentation/"],
+  [
+    urlReplacement("http://www.cls.ioe.ac.uk/Publications.aspx?sitesectionid=83&amp;sitesectiontitle=Coding+Frames"),
+    "the Centre for Longitudinal Studies documentation resources",
+  ],
+  [urlReplacement("http://members.tripod.com/frede_dast/conseil1_a.html"), ""],
+];
+
+const normalizeResourceLinks = (html: string) =>
+  resourceLinkReplacements.reduce(
+    (currentHtml, [pattern, replacement]) => currentHtml.replace(pattern, replacement),
+    html,
+  );
+
+const linkifyUrls = (html: string) =>
+  html.replace(/https?:\/\/[^\s<]+/g, (rawUrl) => {
+    const trailingPunctuation = rawUrl.match(/[),.;]+$/)?.[0] ?? "";
+    const url = trailingPunctuation ? rawUrl.slice(0, -trailingPunctuation.length) : rawUrl;
+
+    return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>${trailingPunctuation}`;
+  });
+
+const preparePublishedHtml = (html: string) =>
+  linkifyUrls(normalizeResourceLinks(normalizeGuideMarkup(cleanExportMarkup(html))))
+    .replace(/<p>\s*<\/p>/g, "")
+    .replace(/<li>\s*<\/li>/g, "");
+
 const sectionSpecificReplacements: Record<string, Array<[RegExp, string]>> = {
   "choosing-a-suitable-scale-of-measurement": [
     [
@@ -297,7 +456,7 @@ const getTransformedHandbook = async () => {
       }
 
       return {
-        html: normalizeGuideMarkup(cleanExportMarkup(section)),
+        html: preparePublishedHtml(section),
       };
     })();
   }

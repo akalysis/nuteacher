@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ChevronDown, ChevronRight, Home, User, BookOpen, HeartPulse, FileText } from "lucide-react";
-import { questionnaireDesignOutline } from "@/app/survey-methods/questionnaire-design/outline";
+import { questionnaireDesignNavigationGroups } from "@/app/survey-methods/questionnaire-design/navigation";
 
 type MenuItem = {
   title: string;
@@ -13,11 +13,10 @@ type MenuItem = {
   children?: { title: string; path: string }[];
 };
 
-const questionnaireDesignMenuItems = questionnaireDesignOutline
-  .filter((item) => item.showInMenu)
-  .map((item) => ({
-    title: item.displayText,
-    path: `/survey-methods/questionnaire-design/${item.id}`,
+const questionnaireDesignMenuItems = questionnaireDesignNavigationGroups
+  .map((group) => ({
+    title: group.title,
+    path: group.href,
   }));
 
 const menuItems: MenuItem[] = [

@@ -4,12 +4,10 @@ import styles from "../page.module.css";
 import { getQuestionnaireSectionHtml } from "../content";
 import { questionnaireDesignOutline } from "../outline";
 
-const visibleSections = questionnaireDesignOutline.filter((item) => item.showInMenu);
+const allSections = questionnaireDesignOutline;
 
 export function generateStaticParams() {
-  return questionnaireDesignOutline
-    .filter((item) => item.showInMenu)
-    .map((item) => ({ section: item.id }));
+  return allSections.map((item) => ({ section: item.id }));
 }
 
 export default async function QuestionnaireDesignSectionPage({
@@ -19,11 +17,11 @@ export default async function QuestionnaireDesignSectionPage({
 }) {
   const { section } = await params;
   const content = await getQuestionnaireSectionHtml(section);
-  const currentIndex = visibleSections.findIndex((item) => item.id === section);
-  const previousSection = currentIndex > 0 ? visibleSections[currentIndex - 1] : null;
+  const currentIndex = allSections.findIndex((item) => item.id === section);
+  const previousSection = currentIndex > 0 ? allSections[currentIndex - 1] : null;
   const nextSection =
-    currentIndex >= 0 && currentIndex < visibleSections.length - 1
-      ? visibleSections[currentIndex + 1]
+    currentIndex >= 0 && currentIndex < allSections.length - 1
+      ? allSections[currentIndex + 1]
       : null;
 
   if (!content) {

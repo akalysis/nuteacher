@@ -1,13 +1,9 @@
 import Link from "next/link";
 import styles from "./page.module.css";
-import { questionnaireDesignOutline } from "./outline";
-
-const mainSections = questionnaireDesignOutline.filter(
-  (item) => item.level === "h2" && item.showInMenu,
-);
-const focusedSections = questionnaireDesignOutline.filter(
-  (item) => item.level !== "h2" && item.showInMenu,
-);
+import {
+  getQuestionnaireDesignGroupSections,
+  questionnaireDesignNavigationGroups,
+} from "./navigation";
 
 export default function QuestionnaireDesignIndexPage() {
   return (
@@ -22,32 +18,34 @@ export default function QuestionnaireDesignIndexPage() {
       </div>
 
       <div className={styles.surface}>
-        <div className={styles.tocGrid}>
-          <div className={styles.tocBlock}>
-            <h2 className={styles.tocTitle}>Main sections</h2>
-            <ul className={styles.tocList}>
-              {mainSections.map((item) => (
-                <li key={item.id}>
-                  <Link href={`/survey-methods/questionnaire-design/${item.id}`}>
-                    {item.displayText}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className={styles.groupList}>
+          {questionnaireDesignNavigationGroups.map((group) => {
+            const sections = getQuestionnaireDesignGroupSections(group.sectionIds);
 
-          <div className={styles.tocBlock}>
-            <h2 className={styles.tocTitle}>Focused topics</h2>
-            <ul className={styles.tocList}>
-              {focusedSections.map((item) => (
-                <li key={item.id}>
-                  <Link href={`/survey-methods/questionnaire-design/${item.id}`}>
-                    {item.displayText}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+            return (
+              <section key={group.title} className={styles.groupCard}>
+                <div className={styles.groupHeader}>
+                  <div>
+                    <h2 className={styles.tocTitle}>
+                      <Link href={group.href}>{group.title}</Link>
+                    </h2>
+                    <p className={styles.groupSummary}>{group.summary}</p>
+                  </div>
+                  <span className={styles.groupMeta}>{sections.length} sections</span>
+                </div>
+
+                <ul className={styles.tocList}>
+                  {sections.map((item) => (
+                    <li key={item.id}>
+                      <Link href={`/survey-methods/questionnaire-design/${item.id}`}>
+                        {item.displayText}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            );
+          })}
         </div>
       </div>
     </section>
