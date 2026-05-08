@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ChevronDown, ChevronRight, Home, User, BookOpen, HeartPulse, FileText } from "lucide-react";
+import { questionnaireDesignOutline } from "@/app/survey-methods/questionnaire-design/outline";
 
 type MenuItem = {
   title: string;
@@ -11,6 +12,13 @@ type MenuItem = {
   icon?: React.ReactNode;
   children?: { title: string; path: string }[];
 };
+
+const questionnaireDesignMenuItems = questionnaireDesignOutline
+  .filter((item) => item.showInMenu)
+  .map((item) => ({
+    title: item.displayText,
+    path: `/survey-methods/questionnaire-design/${item.id}`,
+  }));
 
 const menuItems: MenuItem[] = [
   {
@@ -44,7 +52,8 @@ const menuItems: MenuItem[] = [
     icon: <FileText size={18} />,
     children: [
       { title: "Introduction", path: "/survey-methods" },
-      { title: "Questionnaire Design Handbook", path: "/survey-methods/questionnaire-design" },
+      { title: "Questionnaire design", path: "/survey-methods/questionnaire-design" },
+      ...questionnaireDesignMenuItems,
     ],
   },
 ];
@@ -52,6 +61,20 @@ const menuItems: MenuItem[] = [
 export default function Sidebar() {
   const pathname = usePathname();
   const [openGroups, setOpenGroups] = useState<string[]>(["Newcastle 85+", "Health Expectancies", "Survey Methods"]);
+  const [currentUrl, setCurrentUrl] = useState(pathname);
+
+  useEffect(() => {
+    const updateCurrentUrl = () => {
+      setCurrentUrl(`${window.location.pathname}${window.location.hash}`);
+    };
+
+    updateCurrentUrl();
+    window.addEventListener("hashchange", updateCurrentUrl);
+
+    return () => {
+      window.removeEventListener("hashchange", updateCurrentUrl);
+    };
+  }, [pathname]);
 
   const toggleGroup = (title: string) => {
     setOpenGroups((prev) =>
@@ -84,7 +107,7 @@ export default function Sidebar() {
                     <Link
                       key={child.path}
                       href={child.path}
-                      className={`menu-item-link ${pathname === child.path ? "active" : ""}`}
+                      className={`menu-item-link ${currentUrl === child.path ? "active" : ""}`}
                     >
                       {child.title}
                     </Link>

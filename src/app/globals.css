@@ -115,9 +115,10 @@ a {
 
 .main-content {
   flex: 1;
-  padding: 4rem 5rem;
-  max-width: 1000px;
+  padding: 3.25rem 3.5rem 4rem;
+  max-width: 1120px;
   margin: 0 auto;
+  width: min(100%, 1120px);
 }
 
 /* Sidebar Styling */
@@ -188,7 +189,7 @@ a {
 }
 
 .menu-items.open {
-  max-height: 400px;
+  max-height: 4800px;
 }
 
 .menu-item-link {
@@ -270,3 +271,37 @@ a {
 .mdx-content a:hover { color: var(--accent-emerald); }
 .mdx-content ul { padding-left: 1.5rem; margin-bottom: 1.5rem; color: var(--text-secondary); font-size: 1.1rem; font-weight: 300; }
 .mdx-content li { margin-bottom: 0.5rem; }
+
+@media (max-width: 1280px) {
+  .main-content {
+    padding: 2.5rem 2.5rem 3.5rem;
+    width: 100%;
+  }
+
+  .sidebar {
+    width: 260px;
+    padding: 1.75rem 1.1rem;
+  }
+}
+
+@media (max-width: 980px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    border-bottom: 1px solid var(--border-light);
+    border-right: none;
+    height: auto;
+    max-height: 48vh;
+    position: static;
+    top: auto;
+    width: 100%;
+  }
+
+  .main-content {
+    max-width: none;
+    padding: 2rem 1.25rem 3rem;
+    width: 100%;
+  }
+}
