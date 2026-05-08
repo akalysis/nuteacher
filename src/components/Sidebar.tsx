@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { ChevronDown, ChevronRight, Home, User, BookOpen, HeartPulse, FileText } from "lucide-react";
+import { ChevronDown, ChevronRight, Home, BookOpen, HeartPulse, FileText } from "lucide-react";
 import { questionnaireDesignNavigationGroups } from "@/app/survey-methods/questionnaire-design/navigation";
 import SiteLogo from "./SiteLogo";
 
@@ -25,11 +25,6 @@ const menuItems: MenuItem[] = [
     title: "Home",
     path: "/",
     icon: <Home size={18} />,
-  },
-  {
-    title: "About Me",
-    path: "/about",
-    icon: <User size={18} />,
   },
   {
     title: "Newcastle 85+",
