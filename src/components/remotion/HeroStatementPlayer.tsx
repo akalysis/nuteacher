@@ -37,7 +37,7 @@ function HeroStatementComposition() {
     <AbsoluteFill
       style={{
         background: "transparent",
-        color: "#17201d",
+        color: "#10231f",
         fontFamily: "IBM Plex Sans, system-ui, sans-serif",
         justifyContent: "center",
         overflow: "hidden",
@@ -46,7 +46,7 @@ function HeroStatementComposition() {
     >
       <div
         style={{
-          background: "#873244",
+          background: "#0d4a3c",
           height: 6,
           opacity: markerOpacity,
           transform: `scaleX(${ruleScale})`,
@@ -56,7 +56,7 @@ function HeroStatementComposition() {
       />
       <div
         style={{
-          color: "#17201d",
+          color: "#10231f",
           fontFamily: "Source Serif 4, Georgia, serif",
           fontSize: 72,
           fontWeight: 700,
@@ -70,7 +70,7 @@ function HeroStatementComposition() {
         {visibleText}
         <span
           style={{
-            color: "#a66b1f",
+            color: "#2f7657",
             opacity: visibleCharacters >= statement.length ? 0 : cursorOpacity,
           }}
         >

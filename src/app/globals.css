@@ -1,25 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap");
 
 :root {
-  --bg-main: #f6f8f5;
-  --bg-sidebar: #17201d;
-  --bg-sidebar-soft: #22302b;
+  --bg-main: #f4f8f5;
+  --bg-sidebar: #0f241f;
+  --bg-sidebar-soft: #17362f;
   --bg-card: #ffffff;
-  --bg-card-soft: #eef2ee;
-  --text-primary: #17201d;
-  --text-secondary: #52615b;
-  --text-muted: #728078;
+  --bg-card-soft: #edf4ef;
+  --text-primary: #10231f;
+  --text-secondary: #4e6059;
+  --text-muted: #6e8278;
   --text-inverse: #f8faf7;
-  --accent-green: #1c6b57;
-  --accent-burgundy: #873244;
+  --accent-green: #135f48;
+  --accent-deep-green: #0d4a3c;
   --accent-blue: #345f84;
-  --accent-gold: #a66b1f;
+  --accent-moss: #2f7657;
+  --accent-fern: #8fbc9b;
   --accent-lime: var(--accent-green);
   --accent-emerald: var(--accent-blue);
   --accent-teal: var(--accent-green);
-  --border-light: #d9e0da;
-  --border-strong: #b9c6bd;
-  --shadow-soft: 0 18px 40px rgba(23, 32, 29, 0.08);
+  --border-light: #d5e1d8;
+  --border-strong: #b3c7ba;
+  --shadow-soft: 0 18px 40px rgba(15, 36, 31, 0.08);
   --font-display: "Source Serif 4", Georgia, serif;
   --font-body: "IBM Plex Sans", system-ui, sans-serif;
 }
@@ -81,7 +82,7 @@ p {
 }
 
 .label-tracking {
-  color: var(--accent-burgundy);
+  color: var(--accent-deep-green);
   display: block;
   font-size: 0.78rem;
   font-weight: 700;
@@ -173,7 +174,7 @@ p {
 }
 
 .site-logo-compass-needle {
-  fill: #d2a146;
+  fill: var(--accent-fern);
 }
 
 .site-logo-compass-core {
@@ -227,7 +228,7 @@ p {
 }
 
 .menu-header.active {
-  color: #f5d487;
+  color: var(--accent-fern);
 }
 
 .menu-items {
@@ -507,7 +508,7 @@ p {
 
 .repository-card small {
   align-self: end;
-  color: var(--accent-burgundy);
+  color: var(--accent-deep-green);
   font-weight: 800;
 }
 
@@ -528,7 +529,7 @@ p {
 }
 
 .area-card span {
-  color: var(--accent-burgundy);
+  color: var(--accent-deep-green);
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -580,7 +581,7 @@ p {
 .logo-option-art {
   background:
     linear-gradient(135deg, rgba(248, 250, 247, 0.08), transparent),
-    #17201d;
+    var(--bg-sidebar);
   border-radius: 8px;
   padding: 0.8rem;
 }
@@ -592,7 +593,7 @@ p {
 }
 
 .logo-option-card span {
-  color: var(--accent-burgundy);
+  color: var(--accent-deep-green);
   display: block;
   font-size: 0.76rem;
   font-weight: 800;
@@ -633,7 +634,7 @@ p {
 }
 
 .home-profile-list {
-  border-left: 3px solid var(--accent-gold);
+  border-left: 3px solid var(--accent-moss);
   color: var(--text-secondary);
   display: grid;
   font-size: 0.98rem;
@@ -644,7 +645,7 @@ p {
 }
 
 .home-profile-list li::before {
-  color: var(--accent-burgundy);
+  color: var(--accent-deep-green);
   content: "";
   display: inline-block;
   height: 0.42rem;
@@ -762,7 +763,7 @@ p {
 
   .home-profile-list {
     border-left: 0;
-    border-top: 3px solid var(--accent-gold);
+    border-top: 3px solid var(--accent-moss);
     padding-left: 0;
     padding-top: 1rem;
   }
