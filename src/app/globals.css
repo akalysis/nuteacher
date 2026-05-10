@@ -562,6 +562,63 @@ p {
   gap: 0.35rem;
 }
 
+.logo-options-page {
+  gap: 1.6rem;
+}
+
+.logo-options-heading h1 {
+  max-width: 15ch;
+}
+
+.logo-options-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.logo-option-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: minmax(20rem, 0.9fr) minmax(0, 1fr);
+  padding: 1rem;
+}
+
+.logo-option-art {
+  background:
+    linear-gradient(135deg, rgba(248, 250, 247, 0.08), transparent),
+    #17201d;
+  border-radius: 8px;
+  padding: 0.8rem;
+}
+
+.logo-option-art svg {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.logo-option-card span {
+  color: var(--accent-burgundy);
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.logo-option-card h2 {
+  font-size: 1.85rem;
+  margin-bottom: 0.6rem;
+}
+
+.logo-option-card p {
+  line-height: 1.72;
+}
+
 .evidence-strip {
   align-items: start;
   display: grid;
@@ -695,6 +752,7 @@ p {
 
   .landing-hero,
   .about-card,
+  .logo-option-card,
   .evidence-strip,
   .repository-grid,
   .card-grid,
