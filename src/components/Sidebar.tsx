@@ -8,13 +8,9 @@ import {
   BookOpen,
   ChevronDown,
   ChevronRight,
-  FileText,
   GraduationCap,
-  HeartPulse,
   Home,
-  LibraryBig,
   PenLine,
-  TerminalSquare,
 } from "lucide-react";
 import { questionnaireDesignNavigationGroups } from "@/app/survey-methods/questionnaire-design/navigation";
 import SiteLogo from "./SiteLogo";
@@ -39,46 +35,25 @@ const menuItems: MenuItem[] = [
     icon: <Home size={18} />,
   },
   {
-    title: "Start Here",
-    path: "/start-here",
-    icon: <LibraryBig size={18} />,
-  },
-  {
-    title: "Research Areas",
-    icon: <BookOpen size={18} />,
-    children: [
-      { title: "Newcastle 85+", path: "/newcastle-85" },
-      { title: "Health expectancies", path: "/health-expectancies" },
-    ],
-  },
-  {
-    title: "Methods Notes",
+    title: "Methods",
     path: "/methods",
     icon: <BarChart3 size={18} />,
   },
   {
-    title: "Software Notes",
-    path: "/software",
-    icon: <TerminalSquare size={18} />,
-  },
-  {
-    title: "Teaching",
-    path: "/teaching",
-    icon: <GraduationCap size={18} />,
-  },
-  {
-    title: "Study Resources",
-    icon: <HeartPulse size={18} />,
+    title: "Research",
+    icon: <BookOpen size={18} />,
     children: [
+      { title: "Overview", path: "/research" },
       { title: "Newcastle 85+", path: "/newcastle-85" },
       { title: "Health expectancies", path: "/health-expectancies" },
     ],
   },
   {
-    title: "Survey Methods",
-    icon: <FileText size={18} />,
+    title: "Teaching",
+    icon: <GraduationCap size={18} />,
     children: [
-      { title: "Introduction", path: "/survey-methods" },
+      { title: "Overview", path: "/teaching" },
+      { title: "Survey methods", path: "/survey-methods" },
       {
         title: "Questionnaire design",
         path: "/survey-methods/questionnaire-design",
@@ -87,8 +62,8 @@ const menuItems: MenuItem[] = [
     ],
   },
   {
-    title: "Writing",
-    path: "/writing",
+    title: "Blog",
+    path: "/blog",
     icon: <PenLine size={18} />,
   },
 ];

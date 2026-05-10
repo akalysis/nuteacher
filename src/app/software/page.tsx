@@ -14,9 +14,9 @@ export default function SoftwarePage() {
         <span className="label-tracking">Software Notes</span>
         <h1>Practical analysis workflows for Stata, R, and reproducible work.</h1>
         <p>
-          This section is for the applied details that make research easier to repeat:
-          project setup, analysis scripts, output checking, table production, and habits
-          that reduce avoidable mistakes.
+          Applied details that make research easier to repeat: project setup, analysis
+          scripts, output checking, table production, and habits that reduce avoidable
+          mistakes.
         </p>
       </div>
 

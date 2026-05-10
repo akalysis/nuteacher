@@ -15,8 +15,8 @@ export default function TeachingPage() {
         <span className="label-tracking">Teaching</span>
         <h1>Reusable teaching material for research methods and applied statistics.</h1>
         <p>
-          This section is where teaching notes, practical resources, and explanatory pages
-          can live so they can be sent directly to students, supervisees, and collaborators.
+          Teaching notes, practical resources, and explanatory pages for students,
+          supervisees, and collaborators working with applied health evidence.
         </p>
       </div>
 

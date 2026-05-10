@@ -13,22 +13,21 @@ export default function MethodsPage() {
   return (
     <section className="collection-page">
       <div className="section-heading">
-        <span className="label-tracking">Methods Notes</span>
+        <span className="label-tracking">Methods</span>
         <h1>Problem-led statistical guidance for applied health research.</h1>
         <p>
-          This collection is for short, practical explanations of statistical methods,
-          assumptions, interpretation, and mistakes that often come up in research and
-          teaching.
+          Short, practical explanations of statistical methods, assumptions,
+          interpretation, and mistakes that often come up in research and teaching.
         </p>
       </div>
 
       <div className="evidence-strip">
         <div>
-          <h2>What this section is for</h2>
+          <h2>Planned notes</h2>
           <p>
-            The aim is not to reproduce textbook chapters. Each note should help a student
-            or researcher decide what a method is for, when it fits, what assumptions need
-            defending, and how to write about the result clearly.
+            Each note should help a student or researcher decide what a method does,
+            when it fits, what assumptions need defending, and how to write about the
+            result clearly.
           </p>
         </div>
         <ul className="home-profile-list">
