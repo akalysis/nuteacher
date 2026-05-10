@@ -155,42 +155,33 @@ p {
   width: 3.8rem;
 }
 
-.site-logo-arc,
-.site-logo-line,
-.site-logo-axis {
+.site-logo-compass-ring,
+.site-logo-compass-axis {
   fill: none;
   stroke: rgba(248, 250, 247, 0.92);
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-.site-logo-arc {
-  stroke-width: 2.4;
+.site-logo-compass-ring {
+  stroke-width: 4.2;
 }
 
-.site-logo-line {
-  stroke-width: 1.8;
+.site-logo-compass-axis {
+  opacity: 0.36;
+  stroke-width: 2;
 }
 
-.site-logo-axis {
-  stroke-width: 1.55;
-}
-
-.site-logo-signal {
-  fill: none;
-  stroke: #d2a146;
-  stroke-dasharray: 0.2 7.1;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 4.3;
-}
-
-.site-logo-dot.light {
-  fill: #f8faf7;
-}
-
-.site-logo-dot.olive {
+.site-logo-compass-needle {
   fill: #d2a146;
+}
+
+.site-logo-compass-core {
+  fill: var(--bg-sidebar);
+}
+
+.site-logo-compass-dot {
+  fill: #f8faf7;
 }
 
 .site-logo-wordmark {
