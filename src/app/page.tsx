@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { TitleSpinPlayer } from "@/components/remotion/TitleSpinPlayer";
+import { HeroStatementPlayer } from "@/components/remotion/HeroStatementPlayer";
 
 const primaryAreas = [
   {
@@ -38,9 +38,12 @@ export default function Home() {
       <section className="landing-hero" aria-labelledby="home-title">
         <div className="landing-hero-copy">
           <span className="label-tracking">Andrew Kingston</span>
-          <h1 id="home-title" className="hero-title">
+          <h1 id="home-title" className="visually-hidden">
             Research, teaching, methods, and notes for applied health evidence.
           </h1>
+          <div className="hero-statement-shell" aria-hidden="true">
+            <HeroStatementPlayer />
+          </div>
           <p className="hero-subtitle">
             A public repository for material that sits around my research and teaching:
             statistical methods, surveys, ageing and health studies, software notes,
@@ -54,10 +57,6 @@ export default function Home() {
               Teaching resources
             </Link>
           </div>
-        </div>
-
-        <div className="title-player-shell" aria-label="Animated site title">
-          <TitleSpinPlayer />
         </div>
       </section>
 

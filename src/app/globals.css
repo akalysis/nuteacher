@@ -90,6 +90,18 @@ p {
   text-transform: uppercase;
 }
 
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 .app-layout {
   display: flex;
   min-height: 100vh;
@@ -309,24 +321,21 @@ p {
 }
 
 .landing-hero {
-  align-items: stretch;
   display: grid;
-  gap: 2rem;
-  grid-template-columns: minmax(0, 0.95fr) minmax(24rem, 1.05fr);
+  gap: 1.25rem;
   padding-top: 1rem;
 }
 
 .landing-hero-copy {
   align-content: center;
   display: grid;
-  min-height: 30rem;
+  max-width: 48rem;
+  min-height: 25rem;
 }
 
-.hero-title {
-  font-size: 4.35rem;
-  line-height: 1;
-  margin-bottom: 1.35rem;
-  max-width: 12ch;
+.hero-statement-shell {
+  margin-bottom: 0.55rem;
+  max-width: 52.5rem;
 }
 
 .hero-subtitle {
@@ -370,16 +379,6 @@ p {
 .button-link-primary:hover {
   background: #145644;
   color: #ffffff;
-}
-
-.title-player-shell {
-  align-self: center;
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: 8px;
-  box-shadow: var(--shadow-soft);
-  overflow: hidden;
-  padding: 0.55rem;
 }
 
 .about-card,
@@ -707,11 +706,6 @@ p {
     min-height: auto;
   }
 
-  .hero-title {
-    font-size: 3.35rem;
-    max-width: 12ch;
-  }
-
   .section-heading h1,
   .section-heading h2 {
     font-size: 2.2rem;
@@ -726,8 +720,8 @@ p {
 }
 
 @media (max-width: 620px) {
-  .hero-title {
-    font-size: 2.75rem;
+  .hero-statement-shell {
+    margin-bottom: 0.25rem;
   }
 
   .about-card,
