@@ -3,8 +3,9 @@ import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 
 export const metadata: Metadata = {
-  title: "Andrew Kingston | Digital Garden",
-  description: "Personal digital garden and research portfolio of Andrew Kingston PhD.",
+  title: "Andrew Kingston | Research and Teaching Repository",
+  description:
+    "Research, teaching notes, methods guidance, study resources, and practical software material from Andrew Kingston PhD.",
 };
 
 export default function RootLayout({
@@ -15,10 +16,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning>
-        <div className="blob-container">
-          <div className="blob-1"></div>
-          <div className="blob-2"></div>
-        </div>
         <div className="app-layout">
           <Sidebar />
           <main className="main-content">

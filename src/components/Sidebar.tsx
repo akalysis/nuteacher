@@ -3,7 +3,19 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { ChevronDown, ChevronRight, Home, BookOpen, HeartPulse, FileText } from "lucide-react";
+import {
+  BarChart3,
+  BookOpen,
+  ChevronDown,
+  ChevronRight,
+  FileText,
+  GraduationCap,
+  HeartPulse,
+  Home,
+  LibraryBig,
+  PenLine,
+  TerminalSquare,
+} from "lucide-react";
 import { questionnaireDesignNavigationGroups } from "@/app/survey-methods/questionnaire-design/navigation";
 import SiteLogo from "./SiteLogo";
 
@@ -27,19 +39,39 @@ const menuItems: MenuItem[] = [
     icon: <Home size={18} />,
   },
   {
-    title: "Newcastle 85+",
+    title: "Start Here",
+    path: "/start-here",
+    icon: <LibraryBig size={18} />,
+  },
+  {
+    title: "Research Areas",
     icon: <BookOpen size={18} />,
     children: [
-      { title: "Overview", path: "/newcastle-85" },
-      { title: "Methodology", path: "/newcastle-85/methodology" },
-      { title: "Publications", path: "/newcastle-85/publications" },
+      { title: "Newcastle 85+", path: "/newcastle-85" },
+      { title: "Health expectancies", path: "/health-expectancies" },
     ],
   },
   {
-    title: "Health Expectancies",
+    title: "Methods Notes",
+    path: "/methods",
+    icon: <BarChart3 size={18} />,
+  },
+  {
+    title: "Software Notes",
+    path: "/software",
+    icon: <TerminalSquare size={18} />,
+  },
+  {
+    title: "Teaching",
+    path: "/teaching",
+    icon: <GraduationCap size={18} />,
+  },
+  {
+    title: "Study Resources",
     icon: <HeartPulse size={18} />,
     children: [
-      { title: "Introduction", path: "/health-expectancies" },
+      { title: "Newcastle 85+", path: "/newcastle-85" },
+      { title: "Health expectancies", path: "/health-expectancies" },
     ],
   },
   {
@@ -53,6 +85,11 @@ const menuItems: MenuItem[] = [
         children: questionnaireDesignMenuItems,
       },
     ],
+  },
+  {
+    title: "Writing",
+    path: "/writing",
+    icon: <PenLine size={18} />,
   },
 ];
 

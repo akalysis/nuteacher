@@ -11,6 +11,9 @@ const withMDX = nextMDX({
 
 const nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+  turbopack: {
+    root: process.cwd(),
+  },
 };
 
 export default withMDX(nextConfig);
