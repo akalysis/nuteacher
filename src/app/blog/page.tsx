@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const blogThemes = [
   "Research practice and project context",
   "Recurring student and supervisee questions",
@@ -16,6 +18,19 @@ export default function BlogPage() {
           Posts will cover publication context, research practice, teaching follow-up,
           applied examples, and concise answers to questions that come up repeatedly.
         </p>
+      </div>
+
+      <div className="card-grid">
+        <Link href="/blog/census-disability-2021" className="repository-card">
+          <span>Census 2021</span>
+          <h2>Disability prevalence is not evenly shared across England.</h2>
+          <p>
+            A reflection on an interactive map I built to explore disability
+            prevalence, local inequality, age patterns, and the value of seeing public
+            health data geographically.
+          </p>
+          <small>Read post</small>
+        </Link>
       </div>
 
       <div className="evidence-strip">
