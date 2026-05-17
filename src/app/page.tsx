@@ -67,16 +67,16 @@ export default function Home() {
         </div>
         <div className="about-copy">
           <p>
-            I am Andrew Kingston PhD, CStat, SFHEA. My work sits across ageing,
-            population health, epidemiology, applied statistics, survey methods, and
-            research methods teaching.
+            I am Andrew Kingston. I work across ageing, population health,
+            epidemiology, applied statistics, survey methods, and research methods
+            teaching.
           </p>
           <p>
-            This site brings together material useful beyond a single lecture,
-            supervision meeting, project, or email thread. Some pages are polished
-            teaching resources; others are working notes, study guides, methods
-            explainers, or short posts that make recurring questions easier to answer
-            well.
+            This is a place for the bits of my work that are useful to share beyond
+            one lecture, supervision meeting, project, or email thread. You will find
+            teaching resources, working notes, study guides, methods explainers, and
+            shorter posts that help me answer recurring questions in a clearer, more
+            useful way.
           </p>
         </div>
       </section>
