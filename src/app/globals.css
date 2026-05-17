@@ -770,7 +770,8 @@ p {
   padding: 0.8rem;
 }
 
-.blog-map-figure img {
+.blog-map-figure img,
+.blog-map-figure video {
   border-radius: 6px;
   display: block;
   height: auto;
