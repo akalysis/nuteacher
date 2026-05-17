@@ -758,6 +758,32 @@ p {
   font-size: 1.05rem;
 }
 
+.blog-map-figure {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+  overflow: hidden;
+  padding: 0.8rem;
+}
+
+.blog-map-figure img {
+  border-radius: 6px;
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.blog-map-figure figcaption {
+  color: var(--text-muted);
+  font-size: 0.94rem;
+  line-height: 1.65;
+  padding: 0 0.15rem 0.15rem;
+}
+
 .blog-article-section {
   display: grid;
   gap: 0.85rem;

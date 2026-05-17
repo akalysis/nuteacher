@@ -23,11 +23,11 @@ export default function BlogPage() {
       <div className="card-grid">
         <Link href="/blog/census-disability-2021" className="repository-card">
           <span>Census 2021</span>
-          <h2>Disability prevalence is not evenly shared across England.</h2>
+          <h2>Mapping disability inequality across England.</h2>
           <p>
             A reflection on an interactive map I built to explore disability
-            prevalence, local inequality, age patterns, and the value of seeing public
-            health data geographically.
+            prevalence, place-based inequality, age patterns, and the value of seeing
+            public health data geographically.
           </p>
           <small>Read post</small>
         </Link>

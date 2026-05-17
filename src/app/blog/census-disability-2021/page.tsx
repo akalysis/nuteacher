@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Mapping Disability Prevalence in England | Andrew Kingston",
+  title: "Mapping Disability Inequality in England | Andrew Kingston",
   description:
-    "A short reflection on an interactive Census 2021 map showing how disability prevalence varies across England.",
+    "A short reflection on an interactive Census 2021 map showing how disability prevalence reveals inequality across England.",
 };
 
 export default function CensusDisabilityBlogPost() {
@@ -15,15 +16,15 @@ export default function CensusDisabilityBlogPost() {
           Back to blog
         </Link>
         <span className="label-tracking">Census 2021</span>
-        <h1>Disability prevalence is not evenly shared across England.</h1>
+        <h1>Mapping disability inequality across England.</h1>
         <p>
-          I built an interactive map to make that sentence harder to skim past. The
-          point is not just to show another set of coloured boundaries; it is to make
-          the geography of disability visible enough that we have to ask better
-          questions about health, place, ageing, and public evidence.
+          I built this map because a national disability percentage can sound tidy
+          when the reality is anything but. Census 2021 shows a country where the
+          likelihood of living with limiting long-term illness or disability is deeply
+          patterned by place, age, and the conditions in which people live.
         </p>
         <div className="blog-meta-row">
-          <span>Interactive map</span>
+          <span>Inequality map</span>
           <span>England</span>
           <span>Census 2021</span>
         </div>
@@ -38,27 +39,42 @@ export default function CensusDisabilityBlogPost() {
         </p>
       </div>
 
+      <figure className="blog-map-figure">
+        <Image
+          src="/census-disability-2021-map.png"
+          alt="Screenshot of the Census 2021 disability prevalence map showing gap versus England at local authority level."
+          width={1440}
+          height={1900}
+          priority
+        />
+        <figcaption>
+          The map starts with the gap from the England average, because inequality is
+          the story: blue areas sit below the national average, red areas sit above it,
+          and taller forms show a larger departure.
+        </figcaption>
+      </figure>
+
       <section className="blog-article-section">
-        <h2>Why map this?</h2>
+        <h2>The inequality is the point</h2>
         <p>
-          Disability is often discussed as if it were a single national figure. A
-          percentage is useful, but it can also flatten the thing we most need to see:
-          the unevenness. Disability is patterned by age, illness, work, housing,
-          poverty, services, history, and the everyday conditions of places. Once we
-          put the data on a map, the national average stops feeling like the whole
-          story.
+          Disability is often discussed as if it were a single national figure. That
+          figure is useful, but it can also hide the most important part of the
+          evidence: the unequal distribution. Averages smooth over the fact that some
+          places carry far more disability than others, and that those differences are
+          not random.
         </p>
         <p>
-          That is why I wanted the map to begin with a simple argument: the burden of
-          disability is not distributed evenly. Some local areas sit close to the
-          England average. Others are far above or below it. Those gaps matter because
-          they point to different local needs, different pressures on families and
-          services, and different contexts for interpreting health evidence.
+          Put the data on a map and the national average stops feeling like the whole
+          story. Local authorities, regions, and neighbourhood-scale MSOAs reveal a
+          geography of unequal burden. Some areas sit close to the England average;
+          others are far above or below it. Those gaps matter because they point to
+          different local needs, different pressures on families and services, and
+          different contexts for interpreting health evidence.
         </p>
       </section>
 
       <section className="blog-article-section">
-        <h2>What the map lets you do</h2>
+        <h2>Designing the map around gaps</h2>
         <p>
           The map uses Census 2021 disability data from Nomis table RM073, combined
           with ONS geography boundaries. It covers 309 local authorities and 6,856
@@ -66,18 +82,18 @@ export default function CensusDisabilityBlogPost() {
           local texture without changing tools.
         </p>
         <p>
-          I designed it around comparison rather than decoration. You can switch
-          between regions, local authorities, and MSOAs; filter by broad age groups;
-          view disability prevalence directly; or look at the gap between each place
-          and the England average. Hovering and clicking give the local figures, while
-          the ranking and inequality panels keep the spread visible as you explore.
+          I designed it around comparison rather than decoration. The default view is
+          not just "what is the prevalence here?" but "how far is this place from the
+          England average?" That is a small design choice with a big interpretive
+          consequence. It keeps inequality in view even when you are inspecting a
+          single place.
         </p>
         <p>
-          The most important control may be the one that changes the question. Looking
-          at prevalence asks, "how common is disability here?" Looking at the gap asks,
-          "how far is this place from the national picture?" Both are useful, but they
-          lead the eye differently. The gap view is especially good at making
-          inequality feel concrete.
+          You can still switch to prevalence, move between regions, local authorities,
+          and MSOAs, filter by broad age groups, and inspect local figures by hovering
+          or clicking. But the ranking and inequality panels keep returning the reader
+          to the spread: highest, lowest, and how far apart places are in the current
+          view. The map is built to make inequality difficult to miss.
         </p>
       </section>
 
@@ -94,8 +110,8 @@ export default function CensusDisabilityBlogPost() {
           The age filter is there to slow that down. It lets the reader ask whether a
           pattern is mainly about later life, whether it appears among working-age
           residents too, or whether the local story changes when age is handled more
-          carefully. That kind of checking is not a technical extra; it is part of
-          reading public health data responsibly.
+          carefully. That kind of checking is not a technical extra. It is how we keep
+          an inequality story honest.
         </p>
       </section>
 
@@ -119,7 +135,7 @@ export default function CensusDisabilityBlogPost() {
       </section>
 
       <section className="blog-article-section">
-        <h2>From numbers to questions</h2>
+        <h2>Inequality should make us curious</h2>
         <p>
           The best maps do not close a subject down. They open it up. When one place
           has a much higher disability prevalence than another, the next step is not to
@@ -146,7 +162,7 @@ export default function CensusDisabilityBlogPost() {
           how disability varies across England using open public data.
         </p>
         <p>
-          But I also hope it does something quieter. I hope it makes the national
+          But I also hope it does something quieter: I hope it makes the national
           average feel less final. Averages can be helpful, but they can also make
           unequal lives look tidy. The geography matters. The age pattern matters. The
           distance between places matters. And when we can see those differences more
