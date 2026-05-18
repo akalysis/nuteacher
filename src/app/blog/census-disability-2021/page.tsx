@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -40,13 +39,16 @@ export default function CensusDisabilityBlogPost() {
       </div>
 
       <figure className="blog-map-figure">
-        <Image
-          src="/census-disability-2021-map.png"
-          alt="Map of England showing local authority disability prevalence gaps from the England average."
-          width={660}
-          height={820}
-          priority
-        />
+        <video
+          aria-label="Animated 3D map of England showing local authority disability prevalence gaps from the England average."
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/census-disability-2021-map.png"
+        >
+          <source src="/census-disability-2021-map-preview.mp4" type="video/mp4" />
+        </video>
         <figcaption>
           The map starts with the gap from the England average, because inequality is
           the story: blue areas sit below the national average, red areas sit above it,
