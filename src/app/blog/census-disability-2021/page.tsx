@@ -42,7 +42,6 @@ export default function CensusDisabilityBlogPost() {
         <video
           aria-label="Animated 3D map of England showing local authority disability prevalence gaps from the England average."
           autoPlay
-          loop
           muted
           playsInline
           poster="/census-disability-2021-map.png"
